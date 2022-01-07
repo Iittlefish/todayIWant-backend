@@ -1,9 +1,6 @@
-// src/config/production.ts
-// Entries
-import { Shop, Tag } from '@/entity';
-  // Migrations
 import { ConnectionOptions } from 'typeorm';
-  
+import {Tag, Shop} from '@/entity' ;
+ 
   export default {
     type: 'mysql',
     host: 'localhost',
@@ -18,4 +15,3 @@ import { ConnectionOptions } from 'typeorm';
       charset: 'utf8_unicode_ci',
     },
   } as ConnectionOptions;
-  
