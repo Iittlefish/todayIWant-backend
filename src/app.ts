@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import cors from 'cros';
 import swaggerUi from 'swagger-ui-express';
 import bodyParser from 'body-parser';
+import { TagInfrastructure, ShopInfrastructure} from "./infrastructure";
 import { ConnectionOptions, createConnection } from "typeorm";
 import { RegisterRoutes } from '@/routes';
 
@@ -21,6 +22,9 @@ export default function appInit(typeormConfig:ConnectionOptions):Promise<Express
     app.use('/docs', swaggerUi.serve, (_: Request, res: Response) => res.send(swaggerHtml));
 
     await createConnection(typeormConfig);
+
+    TagInfrastructure.Init();
+    ShopInfrastructure.Init();
 
     RegisterRoutes(app);
 
