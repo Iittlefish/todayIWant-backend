@@ -1,9 +1,14 @@
-import * as config from '@/config/config';
+import 'module-alias/register';
+import 'reflect-metadata';
+
+import * as ormConfig from '@/config/config';
 import appInit from './app';
 import { ConnectionOptions } from 'typeorm';
 import {Express} from 'express';
 
-const typeormConfig = config;
+import { TagInfrastructure } from './infrastructure';
+
+const typeormConfig = ormConfig;
 const port = 3000;
 
 appInit(typeormConfig.default as ConnectionOptions).then(async (app:Express)=>{
@@ -12,3 +17,4 @@ appInit(typeormConfig.default as ConnectionOptions).then(async (app:Express)=>{
 }).catch((err) => {
   console.error(err);
 });
+
