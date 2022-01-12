@@ -1,5 +1,5 @@
 import {Tag} from '@/entity';
-import {getRepository, InsertResult, Repository} from 'typeorm';
+import {DeleteResult, getRepository, InsertResult, Repository} from 'typeorm';
 
 export class TagInfrastructure{
   private static INSTANCE : TagInfrastructure;
@@ -20,11 +20,22 @@ export class TagInfrastructure{
     this.TagRepo = getRepository(Tag);
   }
 
-  public testRoute():Promise<InsertResult>{
+  public async queryAll():Promise<Tag>{
+    const allTag = await this.TagRepo.query(`SELECT * FROM tag`);
+    return allTag;
+  }
+
+  public async save(name:string,id?:number):Promise<Tag>{
     const entity = this.TagRepo.create({
-      name:'testRoute',
+      tag_Id : id,
+      name:name,
     });
-    return this.TagRepo.insert(entity);
+    return await this.TagRepo.save(entity);
+  }
+
+  public async delete(id:number): Promise<any>{
+    const result= await this.TagRepo.delete(id);
+    return result;
   }
 
 }
