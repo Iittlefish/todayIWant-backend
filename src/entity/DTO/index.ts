@@ -3,3 +3,4 @@ export * from './updateTagDTO';
 export * from './editShopDTO';
 export * from './removeTagFromShopDTO';
 export * from './deleteShopDTO';
+export * from './queryDTO';

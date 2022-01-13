@@ -44,4 +44,11 @@ export class ShopInfrastructure{
   public async deleteByCondition(condition:object):Promise<any>{
     return await this.shopRepo.delete(condition);
   }
+
+  public async find(condition:object):Promise<any>{
+    return await this.shopRepo.find(condition);
+  }
+  public async query(sql:string):Promise<Shop>{
+    return await this.shopRepo.query(sql);
+  }
 }
