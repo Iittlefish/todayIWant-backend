@@ -1,13 +1,11 @@
 import { Tags, Get, Route, Controller, Path, Delete, Patch, Post, Body } from "tsoa";
 import * as tagEditor from '@/service/tagEditor';
-import { request } from "express";
-import { updateTagDTO } from "@/entity/DTO/updateTagDTO";
-import { addTagDTO } from "@/entity/DTO/addTagDTO";
+import { addTagDTO, updateTagDTO } from '@/entity/DTO';
 
 @Tags('tagEditor')
 @Route('tagEditor')
-export class TagEdotor extends Controller{
-  @Get('getAllEditor')
+export class TagEditor extends Controller{
+  @Get('getAllTag')
   public async getAllTag():Promise<any>{
     return tagEditor.getAllTag();
   }

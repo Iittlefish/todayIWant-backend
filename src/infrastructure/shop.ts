@@ -19,4 +19,29 @@ export class ShopInfrastructure{
   constructor(){
     this.shopRepo = getRepository(Shop);
   }
+
+  public async queryAll():Promise<Shop>{
+    const allTag = await this.shopRepo.query(`SELECT * FROM shop`);
+    return allTag;
+  }
+
+  public async create(name:string,tagId:number):Promise<Shop>{
+    return  this.shopRepo.create({
+      name:name,
+      tag_id:tagId,
+    })
+  }
+
+  public async add(entity:Array<Shop>){
+    return await this.shopRepo.save(entity);
+  }
+
+  public async delete(id:number): Promise<any>{
+    const result= await this.shopRepo.delete(id);
+    return result;
+  }
+
+  public async deleteByCondition(condition:object):Promise<any>{
+    return await this.shopRepo.delete(condition);
+  }
 }

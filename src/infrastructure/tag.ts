@@ -33,6 +33,8 @@ export class TagInfrastructure{
     return await this.TagRepo.save(entity);
   }
 
+  
+
   public async delete(id:number): Promise<any>{
     const result= await this.TagRepo.delete(id);
     return result;

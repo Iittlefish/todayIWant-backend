@@ -6,26 +6,26 @@ export class Shop{
         type: 'int',
         unsigned: true,
     })
-    shopId : number;
+    shop_id : number;
     @Column({
         type: 'text',
         collation: 'utf8_unicode_ci',
         default: 'NULL',
     })
-    shopName : string;
+    name : string;
     @Column('int', {
         unsigned: true,
     })
-    tagId : number;
+    tag_id : number;
 
     constructor(param : Shop ={} as Shop){
         const {
-            shopId,
-            shopName,
-            tagId,
+            shop_id,
+            name,
+            tag_id,
         } = param;
-        this.shopId = shopId;
-        this.shopName= shopName;
-        this.tagId = tagId;
+        this.shop_id = shop_id;
+        this.name= name;
+        this.tag_id = tag_id;
      }
 }
